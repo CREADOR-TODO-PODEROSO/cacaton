@@ -8,10 +8,10 @@
 
 ##  Tecnologías Utilizadas
 
-  * [cite_start]**Backend:** Django 6.0[cite: 40, 160].
-  * [cite_start]**API:** Django REST Framework (DRF)[cite: 40, 160].
+  * [cite_start]**Backend:** Django 6.0
+  * [cite_start]**API:** Django REST Framework (DRF)
   * **Documentación:** Swagger (drf-yasg).
-  * [cite_start]**Base de Datos:** SQLite (Persistencia de datos)[cite: 78, 195].
+  * [cite_start]**Base de Datos:** SQLite (Persistencia de datos)
 
 -----
 
@@ -22,8 +22,8 @@ Sigue estos pasos para poner en marcha el simulador en tu entorno local:
 ### 1\. Clonar y Preparar el Entorno
 
 ```bash
-# Clonar el repositorio (reemplaza con tu link)
-git clone https://github.com/tu-usuario/hackathon_survival.git
+# Clonar el repositorio 
+git clone https://github.com/CREADOR-TODO-PODEROSO/cacaton.git
 cd hackathon_survival
 
 # Crear y activar entorno virtual
@@ -39,7 +39,7 @@ pip install django djangorestframework drf-yasg django-cors-headers
 
 ### 2\. Configurar la Base de Datos
 
-[cite_start]Es necesario aplicar las migraciones para crear las tablas de Usuarios, Acciones y Estado del Jugador [cite: 161, 163-164].
+Es necesario aplicar las migraciones para crear las tablas de Usuarios, Acciones y Estado del Jugador 
 
 ```bash
 python manage.py makemigrations
@@ -48,7 +48,7 @@ python manage.py migrate
 
 ### 3\. Cargar Datos Iniciales (Seed)
 
-[cite_start]He incluido un script para cargar automáticamente las acciones de supervivencia necesarias para jugar[cite: 73, 190].
+He incluido un script para cargar automáticamente las acciones de supervivencia necesarias para jugar
 
 ```bash
 python seed.py
@@ -71,19 +71,18 @@ Puedes probar la lógica completa desde la documentación interactiva en:
 
 ### Flujo de Juego Recomendado:
 
-1.  **Registro de Usuario (`POST /api/usuario/`)**: Crea un usuario con `username` y `password`. [cite_start]Esto genera automáticamente su estado inicial (37°C de temperatura y 100% de energía) [cite: 173-176, 180].
-2.  [cite_start]**Ver Acciones (`GET /api/acciones/`)**: Consulta el catálogo de acciones disponibles y anota sus IDs [cite: 168-171].
+1.  **Registro de Usuario (`POST /api/usuario/`)**: Crea un usuario con `username` y `password`. [cite_start]Esto genera automáticamente su estado inicial (37°C de temperatura y 100% de energía)
+2.  [cite_start]**Ver Acciones (`GET /api/acciones/`)**: Consulta el catálogo de acciones disponibles y anota sus IDs 
 3.  **Ejecutar Acción (`POST /api/juego/{id}/ejecutar_accion/`)**: Envía el `accion_id` para afectar el estado de tu sobreviviente.
-      * [cite_start]*Nota:* La lógica incluye un **componente aleatorio** que varía el impacto base de cada acción[cite: 191].
-4.  [cite_start]**Ranking (`GET /api/usuario/`)**: Lista a los sobrevivientes que aún están con vida, ordenados por sus recursos recolectados [cite: 187-188].
-
+      * [cite_start]*Nota:* La lógica incluye un **componente aleatorio** que varía el impacto base de cada acción
+4.  [cite_start]**Ranking (`GET /api/usuario/`)**: Lista a los sobrevivientes que aún están con vida, ordenados por sus recursos recolectados 
 -----
 
 ##  Lógica del Sistema
 
-  * [cite_start]**Condición de Derrota:** El jugador pierde automáticamente si su **temperatura** o su **energía** llega a cero o menos[cite: 192].
-  * [cite_start]**Relaciones entre Tablas:** La actualización del estado se realiza mediante una relación `OneToOne` entre el modelo `User` y `EstadoJugador`[cite: 162, 164, 173].
-  * [cite_start]**Validación:** No se permite ejecutar acciones si el jugador ya ha fallecido[cite: 197].
+  * [cite_start]**Condición de Derrota:** El jugador pierde automáticamente si su **temperatura** o su **energía** llega a cero o menos
+  * [cite_start]**Relaciones entre Tablas:** La actualización del estado se realiza mediante una relación `OneToOne` entre el modelo `User` y `EstadoJugador`
+  * [cite_start]**Validación:** No se permite ejecutar acciones si el jugador ya ha fallecido
 
 
 

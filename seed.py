@@ -16,7 +16,7 @@ def load_actions():
 
     for a in acciones:
         Accion.objects.get_or_create(**a)
-    print("✅ Acciones de supervivencia creadas con éxito.")
+    print(" Acciones de supervivencia creadas con éxito.")
 
 if __name__ == '__main__':
     load_actions()
